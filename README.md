@@ -7,7 +7,7 @@
 * [General Info](#general-info)
 * [Technologies](#technologies)
 * [Setup](#setup)
-* [Implementation](#implementation)
+* [Implementation of Functional Requirements](#implementation-of-functional-requirements)
 
 ## General Info
 This application is a recipe database website. Authorized users can create, delete, and view recipes. The recipe database can be seen by any authorized users.
@@ -25,13 +25,15 @@ To run this project, load up a Python virtual environment with the above [Techno
 $ python3 run.app
 ```
 
-## Implementation
-1. 
-2. 
-3. 
-4. 
-5. 
-6. 
-7. 
+## Implementation of Functional Requirements
+### Welson
+1. A Sign Up form must be implemented to collect a user's username, password, and email.
+2. A Log In form will allow users to login using their email and password.
+3. The system must provide the the user the option to Log Out.
+4. A New Recipe form prompts the user for a recipe title, description, ingredients, and instructions.
+### Ye
+5. A Delete Recipe option must be implemented to allow users to permanently remove their recipes from the database.
+6. A View Recipe feature must enable users to view all details of a selected recipe, including title, description, ingredients, and instructions.
+7. A View All Recipes feature must allow users to browse all recipes available in the database.
 
 ---
