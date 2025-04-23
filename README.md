@@ -20,9 +20,18 @@ This project is created with:
 * Flask-Login version: 0.5.0
 	
 ## Setup
-To run this project, load up a Python virtual environment with the above [Technologies](#technologies). Then:
+To run this project, create a virtual evironment:
 ```
-$ python3 run.app
+$ python3 -m venv venv
+$ source venv/bin/activate
+```
+Install the necessary libraries from [Technologies](#technologies) using:
+```
+$ pip3 install <library>
+```
+Then run the application using:
+```
+$ flask run
 ```
 
 ## Implementation of Functional Requirements
@@ -30,8 +39,8 @@ $ python3 run.app
 1. A Sign Up form must be implemented to collect a user's username, password, and email.
 2. A Log In form will allow users to login using their email and password.
 3. The system must provide the the user the option to Log Out.
-4. A New Recipe form prompts the user for a recipe title, description, ingredients, and instructions.
 ### Ye
+4. A New Recipe form prompts the user for a recipe title, description, ingredients, and instructions.
 5. A Delete Recipe option must be implemented to allow users to permanently remove their recipes from the database.
 6. A View Recipe feature must enable users to view all details of a selected recipe, including title, description, ingredients, and instructions.
 7. A View All Recipes feature must allow users to browse all recipes available in the database.
