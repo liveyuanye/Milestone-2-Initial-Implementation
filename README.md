@@ -23,11 +23,19 @@ This project is created with:
 To run this project, create a virtual evironment:
 ```
 $ python3 -m venv venv
+```
+Activate the virtual environment macOS / Linux:
+```
 $ source venv/bin/activate
 ```
+Windows (cmd / PowerShell):
+```
+$ .\venv\Scripts\activate
+```
+
 Install the necessary libraries from [Technologies](#technologies) using:
 ```
-$ pip3 install <library>
+$ pip install -r requirements.txt
 ```
 Then run the application using:
 ```
