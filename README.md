@@ -28,7 +28,7 @@ Activate the virtual environment macOS / Linux:
 ```
 $ source venv/bin/activate
 ```
-Windows (cmd / PowerShell):
+Activate the virtual environment Windows (cmd / PowerShell):
 ```
 $ .\venv\Scripts\activate
 ```
