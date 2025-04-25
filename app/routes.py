@@ -45,6 +45,7 @@ def delete_recipe(id):
         return redirect(url_for('recipes'))
     return render_template('delete_recipe.html', recipe=recipe)
 
+# Route for logging in existing users
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
@@ -58,22 +59,32 @@ def login():
         flash('Invalid username or password')
     return render_template('login.html', form=form)
 
+# Route for logging user out
+# This will be accessible with the navigation bar button
 @app.route('/logout')
 @login_required
 def logout():
+    # From flask_login: removes authenticated access from the user
     logout_user()
     return redirect(url_for('recipes'))
 
+# Route for creating an account (authenticate to use the app)
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
         return redirect(url_for('recipes'))
+    # RegistrationForm() is used to collect user info
     form = RegistrationForm()
     if form.validate_on_submit():
         hashed_password = generate_password_hash(form.password.data)
         user = User(username=form.username.data, password=hashed_password)
         db.session.add(user)
         db.session.commit()
+        # After adding the user to the database,
+        # Let them know they can start using their credentials for authenticated access
         flash('Your account has been created! You can now log in.', 'success')
         return redirect(url_for('login'))
+    # If the user doesn't complete the form correctly, let them know to do so.
+    elif request.method == 'POST':
+        flash('Please complete the form correctly.', 'danger')
     return render_template('register.html', form=form)
