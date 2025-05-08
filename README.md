@@ -27,6 +27,14 @@ This project is created with:
 
 	
 ## Setup
+Clone the repository:
+```
+git clone https://github.com/liveyuanye/Milestone-2-Initial-Implementation.git
+```
+Navigate into the project directory:
+```
+cd Milestone-2-Initial-Implementation
+```
 To run this project, create a virtual evironment:
 ```
 $ python3 -m venv venv
