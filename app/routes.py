@@ -5,6 +5,7 @@ from app import db
 from app.models import Recipe, User
 from app.forms import RecipeForm, LoginForm, RegistrationForm
 from flask import current_app as app
+from random import choice
 
 @app.route('/')
 @app.route('/recipes')
@@ -12,11 +13,13 @@ def recipes():
     recipes = Recipe.query.all()
     return render_template('recipes.html', recipes=recipes)
 
+
 @app.route('/recipe/<int:id>')
 @login_required
 def recipe(id):
     recipe = Recipe.query.get_or_404(id)
-    return render_template('recipe.html', recipe=recipe)
+    share_url = url_for('recipe', id=recipe.id, _external=True)
+    return render_template('recipe.html', recipe=recipe, share_url=share_url)
 
 @app.route('/recipe/new', methods=['GET', 'POST'])
 @login_required
@@ -88,3 +91,13 @@ def register():
     elif request.method == 'POST':
         flash('Please complete the form correctly.', 'danger')
     return render_template('register.html', form=form)
+
+# Random Recipe Route
+@app.route('/random_recipe')
+def random_recipe():
+    recipes = Recipe.query.all()
+    if recipes:
+        random_recipe = choice(recipes)
+        return redirect(url_for('recipe', id=random_recipe.id))
+    else:
+        return redirect(url_for('recipes'))

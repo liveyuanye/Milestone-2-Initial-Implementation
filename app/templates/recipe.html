@@ -10,6 +10,21 @@
     <p><strong>Instructions:</strong> {{ recipe.instructions }}</p>
     <p><strong>Created at:</strong> {{ recipe.created.strftime('%Y-%m-%d %H:%M:%S') }}</p>
     
+    <p>Share this recipe</p>
+<!-- Twitter share -->
+    <a href="https://twitter.com/intent/tweet?text={{ recipe.title }}&url={{ share_url }}" target="_blank">
+    Share on Twitter
+    </a><br>
+
+<!-- Facebook share -->
+    <a href="https://www.facebook.com/sharer/sharer.php?u={{ share_url }}" target="_blank">
+    Share on Facebook
+    </a><br>
+
+<!-- WhatsApp share -->
+    <a href="https://api.whatsapp.com/send?text={{ recipe.title }} {{ share_url }}" target="_blank">
+    Share on WhatsApp
+    </a><br>
     {% if current_user.is_authenticated and current_user.id == recipe.user_id %}
         <a href="{{ url_for('delete_recipe', id=recipe.id) }}">Delete Recipe</a>
     {% endif %}
