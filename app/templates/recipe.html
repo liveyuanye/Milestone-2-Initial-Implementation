@@ -3,31 +3,52 @@
 {% block title %}{{ recipe.title }}{% endblock %}
 
 {% block content %}
-    <h1>{{ recipe.title }}</h1>
-    <p><strong>Created by:</strong> {{ recipe.user.username }}</p>
-    <p><strong>Description:</strong> {{ recipe.description }}</p>
-    <p><strong>Ingredients:</strong> {{ recipe.ingredients }}</p>
-    <p><strong>Instructions:</strong> {{ recipe.instructions }}</p>
-    <p><strong>Created at:</strong> {{ recipe.created.strftime('%Y-%m-%d %H:%M:%S') }}</p>
-    
-    <p>Share this recipe</p>
-<!-- Twitter share -->
-    <a href="https://twitter.com/intent/tweet?text={{ recipe.title }}&url={{ share_url }}" target="_blank">
-    Share on Twitter
-    </a><br>
 
-<!-- Facebook share -->
-    <a href="https://www.facebook.com/sharer/sharer.php?u={{ share_url }}" target="_blank">
-    Share on Facebook
-    </a><br>
+<h1 class="mb-4">{{ recipe.title }}</h1>
 
-<!-- WhatsApp share -->
-    <a href="https://api.whatsapp.com/send?text={{ recipe.title }} {{ share_url }}" target="_blank">
-    Share on WhatsApp
-    </a><br>
+<div class="col-md-6">
+    <!-- Recipe Creator -->
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Created by:</label>
+        <div class="col-sm-9">
+            <p class="form-control-plaintext mb-0">{{ recipe.user.username }}</p>
+        </div>
+    </div>
+    <!-- Recipe Description -->
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Description:</label>
+        <div class="col-sm-9">
+            <p class="form-control-plaintext mb-0 border p-2 rounded">{{ recipe.description.replace('\n', '<br>')|safe }}</p>
+        </div>
+    </div>
+    <!-- Recipe Ingredients -->
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Ingredients:</label>
+        <div class="col-sm-9">
+            <p class="form-control-plaintext mb-0 border p-2 rounded">{{ recipe.ingredients.replace('\n', '<br>')|safe }}</p>
+        </div>
+    </div>
+    <!-- Recipe Instructions -->
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Instructions:</label>
+        <div class="col-sm-9">
+            <p class="form-control-plaintext mb-0 border p-2 rounded">{{ recipe.instructions.replace('\n', '<br>')|safe }}</p>
+        </div>
+    </div>
+    <!-- Creation D&T -->
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Created:</label>
+        <div class="col-sm-9">
+            <p class="form-control-plaintext mb-0 border p-2 rounded">{{ recipe.created.strftime('%Y-%m-%d %H:%M:%S') }}</p>
+        </div>
+    </div>
+</div>
+
+<!-- If the user created the recipe, they cay delete it -->
+<p>
     {% if current_user.is_authenticated and current_user.id == recipe.user_id %}
-        <a href="{{ url_for('delete_recipe', id=recipe.id) }}">Delete Recipe</a>
+    <a href="{{ url_for('delete_recipe', id=recipe.id) }}" class="btn btn-danger rounded-pill px-3" role="button">Delete Recipe</a>
     {% endif %}
-    
-    <a href="{{ url_for('recipes') }}">Back to Recipes</a>
+</p>
+
 {% endblock %}

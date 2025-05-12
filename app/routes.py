@@ -7,19 +7,25 @@ from app.forms import RecipeForm, LoginForm, RegistrationForm
 from flask import current_app as app
 from random import choice
 
+
+
 @app.route('/')
 @app.route('/recipes')
+#@login_required
 def recipes():
     recipes = Recipe.query.all()
     return render_template('recipes.html', recipes=recipes)
 
 
+
 @app.route('/recipe/<int:id>')
-@login_required
+#@login_required
 def recipe(id):
     recipe = Recipe.query.get_or_404(id)
     share_url = url_for('recipe', id=recipe.id, _external=True)
     return render_template('recipe.html', recipe=recipe, share_url=share_url)
+
+
 
 @app.route('/recipe/new', methods=['GET', 'POST'])
 @login_required
@@ -37,6 +43,8 @@ def new_recipe():
         return redirect(url_for('recipes'))
     return render_template('new_recipe.html', title='New Recipe', form=form)
 
+
+
 @app.route('/recipe/<int:id>/delete', methods=['GET', 'POST'])
 @login_required
 def delete_recipe(id):
@@ -47,6 +55,8 @@ def delete_recipe(id):
         flash('Recipe has been deleted.', 'success')
         return redirect(url_for('recipes'))
     return render_template('delete_recipe.html', recipe=recipe)
+
+
 
 # Route for logging in existing users
 @app.route('/login', methods=['GET', 'POST'])
@@ -62,14 +72,18 @@ def login():
         flash('Invalid username or password')
     return render_template('login.html', form=form)
 
+
+
 # Route for logging user out
-# This will be accessible with the navigation bar button
+# Logout should only work when the user is logged in
 @app.route('/logout')
 @login_required
 def logout():
     # From flask_login: removes authenticated access from the user
     logout_user()
-    return redirect(url_for('recipes'))
+    return redirect(request.referrer or url_for("recipes"))
+
+
 
 # Route for creating an account (authenticate to use the app)
 @app.route('/register', methods=['GET', 'POST'])
@@ -91,6 +105,8 @@ def register():
     elif request.method == 'POST':
         flash('Please complete the form correctly.', 'danger')
     return render_template('register.html', form=form)
+
+
 
 # Random Recipe Route
 @app.route('/random_recipe')
