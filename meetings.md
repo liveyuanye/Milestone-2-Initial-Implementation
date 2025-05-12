@@ -10,10 +10,22 @@
 - Meeting Minutes (~5min)
 - We discussed how we would go about doing the requirements. Welson can start first, and also fix up the organization.
 ---
-
+### 2025-04-22 at 21:00
+- Attendees: Welson and Ye
+- Meeting Minutes (~10min)
+- We organized a new repo for Milestone 2.
+- The initial implementations have been made, and we will polish the README within the coming days.
 ---
-### 2023-10-08 at 13:30
-<meeting template would go here>
-<only fill in template once you had the meeting>
-<see example on the last date>
-<use date format YYYY-MM-DD at HH:MM>
+### 2025-05-06 at 18:45
+- Attendees: Welson and Ye
+- Meeting Minutes (~10min)
+- Ye updated the requirements to fit Milestone 1's new rubric.
+- We discussed the necessary dependencies in our requirements.txt and updated them.
+- -Ye updated the setup. Should work properly now.
+---
+### 2025-05-09 at 14:00
+- Attendees: Welson and Ye
+- Meeting Minutes (~10min)
+- We discussed the rubric for Milestone 3.
+- Ye will add two more functions, and Welson will fix up the HTML.
+---
