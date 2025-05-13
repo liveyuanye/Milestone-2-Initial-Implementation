@@ -3,6 +3,9 @@
 - Ye Yuan (@liveyuanye)
 - Welson Kuang (@welsonk)
 
+## Presentation link
+https://drive.google.com/file/d/1l1O0YOnh5gcKZhtLyMEmrfxkf8ucMJKR/view?usp=drive_link
+
 ## Table of Contents
 * [General Info](#general-info)
 * [Technologies](#technologies)
