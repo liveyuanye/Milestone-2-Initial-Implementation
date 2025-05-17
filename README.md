@@ -32,32 +32,32 @@ This project is created with:
 ## Setup
 Clone the repository:
 ```
-$ git clone https://github.com/liveyuanye/Milestone-2-Initial-Implementation.git
+git clone https://github.com/liveyuanye/Milestone-2-Initial-Implementation.git
 ```
 Navigate into the project directory:
 ```
-$ cd Milestone-2-Initial-Implementation
+cd Milestone-2-Initial-Implementation
 ```
 To run this project, create a virtual evironment:
 ```
-$ python3 -m venv venv
+python3 -m venv venv
 ```
 Activate the virtual environment macOS / Linux:
 ```
-$ source venv/bin/activate
+source venv/bin/activate
 ```
 Activate the virtual environment Windows (cmd / PowerShell):
 ```
-$ .\venv\Scripts\activate
+.\venv\Scripts\activate
 ```
 
 Install the necessary libraries from [Technologies](#technologies) using:
 ```
-$ pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 Then run the application using:
 ```
-$ flask run
+flask run
 ```
 
 ## Implementation of Functional Requirements
