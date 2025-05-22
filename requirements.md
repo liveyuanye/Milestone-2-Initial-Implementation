@@ -90,22 +90,20 @@ Welson (1-5)
   3. The user clicks Save.
   4. The system prompts the user to properly fill out the form.
 ---
-5. Edit Recipe
+5. Sequential Recipe ID Generation
 - **Actor(s):** User and system.
-- **Pre-condition:** User has an existing recipe they want to change.
-- **Trigger:** User selects Change Recipe.
+- **Pre-condition:** User creates a new recipe via the "Create Recipe" form.
+- **Trigger:** User submits the new recipe form.
 - **Primary Sequence:**
-  1. The system shows the user the selected recipe in an editable form.
-  2. The user makes changes to the recipe.
-  3. The user selects Save.
-  4. The system saves the updated recipe information.
-  5. The user is sent back to the main page.
-- **Primary Postconditions:** The changed recipe can now be viewed in replacement of the old recipe by all authenticated users.
+  1. User submits the recipe details (title, description, ingredients, and instructions).
+  2. System generates the next available sequential ID number.
+  3. System stores the recipe with the generated ID.
+  4. Recipe becomes available at URL http://127.0.0.1:5000/recipe/[generated_id].
+- **Primary Postconditions:** The newly created recipe has a sequential numeric URL identifier accessible directly by the user.
 - **Alternate Sequence:**
-  1. The system shows the user the selected recipe in an editable form.
-  2. The user deletes the title.
-  3. The user selects Save.
-  4. The system prompts the user to not leave any field blank.
+  1. User submits the recipe details.
+  2. System encounters an internal error while generating the sequential ID.
+  3. System informs the user to retry submitting the recipe.
 ---
 Ye (6-10)
 
@@ -153,61 +151,33 @@ Ye (6-10)
   2. The system fails to retrieve recipes due to a network issue.
   3. The system notifies the user of the error and prompts them to try again later.
 ---
-9. Edit User Profile
+9. Share Recipe
 - **Actor(s):** User and system.
-- **Pre-condition:** User wants to update their profile information.
-- **Trigger:** User selects the "Edit Profile" option.
+- **Pre-condition:** User is viewing a specific recipe's detail page.
+- **Trigger:** User selects a share option for the currently viewed recipe.
 - **Primary Sequence:**
-  1. The system shows the user their current profile information in an editable form.
-  2. The user updates their display name, email, or password.
-  3. The user selects "Save".
-  4. The system updates the existing recipe information.
-- **Primary Postconditions:**  The user's updated profile information is saved and reflected across the website.
+  1. User clicks on the share icons for social media platforms (X, Instagram, Facebook, WhatsApp).
+  2. System open a new window for social media platforms.
+  3. User confirms sharing social media platform.
+- **Primary Postconditions:** Recipe details can be successfully shared on selected social media platforms or messaging services.
 - **Alternate Sequence:**
-  1. The system shows the user their current profile information in an editable form.
-  2. The user leaves a required field (e.g., email or password) blank.
-  3. The user selects "Save".
-  4. The system prompts the user to fill out all required fields.
----
-10. Save Recipe (Favorites)
-- **Actor(s):** User and system.
-- **Pre-condition:** User wants to save a recipe for quick access later.
-- **Trigger:** User selects the "Save Recipe" or "Favorite" option.
+  1. User clicks on the share icon.
+  2. System opens a new window for the selected social media platform.
+  3. User decides not to share and closes the new window.
+  4. System returns the user to the recipe detail page without any changes.
+ ---
+10. Random Recipe
+- **Actor(s):** Random Recipe Display
+- **Pre-condition:** At least one recipe exists in the system.
+- **Trigger:** User selects the "Random Recipe" button.
 - **Primary Sequence:**
-  1. The user selects the recipe they want to save.
-  2. The system adds the recipe to the user's list of saved recipes.
-  3. The system notifies the user that the recipe has been saved.
-- **Primary Postconditions:** The recipe is saved under the user's profile for quick access later.
+  1. User clicks on the "Random Recipe" button.
+  2. System selects a recipe at random from the existing recipes stored in the system.
+  3. System navigates the user to the detailed view of the randomly selected recipe.
+- **Primary Postconditions:** User sees a randomly selected recipe's detailed view, including title, description, ingredients, instructions, and creation details.
 - **Alternate Sequence:**
-  1. The user selects the recipe they want to save.
-  2. The system fails to save the recipe due to a network issue.
-  3. The system notifies the user of the failure and prompts them to try again later.
----
-11. Rate Recipe
-- **Actor(s):** User and system.
-- **Pre-condition:** User is logged in and viewing a specific recipe they wish to rate.
-- **Trigger:** User selects a rating option (e.g., star rating) for the recipe.
-- **Primary Sequence:**
-  1. User selects their desired rating for the recipe.
-  2. System saves the rating and updates the recipe's overall average rating.
-  3. System notifies the user of successful submission and displays the updated rating on the recipe page.
-- **Primary Postconditions:** The user's rating is recorded, and the recipe's average rating is updated and visible.
-- **Alternate Sequence:**
-  1. User attempts to select a rating.
-  2. The system detects the user is not logged in.
-  3. The system prompts the user to log in or register to rate recipes.
----
-12. Comment on Recipe
-- **Actor(s):** User and system.
-- **Pre-condition:** User is logged in and viewing a specific recipe they wish to comment on.
-- **Trigger:** User selects the "Add Comment" option for the recipe.
-- **Primary Sequence:**
-  1. User types and submits their comment.
-  2. System validates and saves the comment, associating it with the user and the recipe.
-  3. System notifies the user of successful posting and displays the new comment on the recipe page.
-- **Primary Postconditions:** The user's comment is saved and is visible to other authenticated users viewing the recipe.
-- **Alternate Sequence:**
-  1. User attempts to access the comment input field or submit a comment.
-  2. The system detects the user is not logged in.
-  3. The system prompts the user to log in or register to comment on recipes.
-
+  1. User clicks on the "Random Recipe" button.
+  2. System fails to retrieve a random recipe due to a network issue.
+  3. System informs user of the issue and requests the user to try again later.
+ 
+  
