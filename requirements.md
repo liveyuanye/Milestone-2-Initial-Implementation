@@ -1,29 +1,29 @@
 ## WARNING: This is the file with our project requirements. If you're looking for the virtual environment dependencies, go to requirements.txt instead!
 
 ## Functional Requirements
-1. A Sign Up form must be implemented to collect a user's username, password, and email. 
-2. A Log In form will allow users to login using their email and password.
-3. The system must provide the the user the option to Log Out.
-4. A New Recipe form prompts the user for a recipe title, description, ingredients, and instructions.
-5. The website should provide a feature to allow users to see and edit their own recipes.
-6. A Delete Recipe option must be implemented to allow users to permanently remove their recipes from the database.
-7. A View Recipe feature must enable users to view all details of a selected recipe, including title, description, ingredients, and instructions.
-8. A View All Recipes feature must allow users to browse all recipes available in the database.
-9. An Edit User Profile form must enable users to update their profile information, including display name, email, or password.
-10. A Save Recipe (Favorites) feature must allow users to save recipes for quick access later.
+1. A Sign Up form must collect and save the user's username, password, and email.
+2. A Log In form must authenticate users using their email and password.
+3. Users must have the option to Log Out, removing their authenticated access.
+4. Users must be able to create a New Recipe by entering a title, description, ingredients, and instructions.
+5. The system must assign sequential numeric IDs to recipes upon creation, making them accessible via a structured URL (e.g., http://127.0.0.1:5000/recipe/[id]).
+6. Users must have the ability to permanently delete their recipes.
+7. Users must be able to view all details (title, description, ingredients, instructions) of a specific recipe.
+8. Users must be able to browse all available recipes in the database.
+9. Users must have the option to share recipe details through social media platforms (X, Instagram, Facebook, WhatsApp).
+10. Users must have the option to display a randomly selected recipe from the database.
 
 
 ## Non-functional Requirements
-1. The system should notify the user if their Sign Up info doesn't follow security requirements.
-2. Passwords must be hashed to ensure user security.
-3. The Log Out option must ensure all authenticated access is taken back to prevent unauthorized access.
-4. A New Recipe should save/publish to the database within 1 second.
-5. Changes to an Existing Recipe should save/publish to the database within 1 second.
-6. The Delete Recipe operation must confirm the user's intent to delete and execute the operation within 1 second.
-7. The View Recipe feature should retrieve and display recipe details within 1 second after selection.
-8. The View All Recipes feature should list all recipes from the database within 2 seconds.
-9. The Edit User Profile operation should save changes to the database within 1 second.
-10. The Save Recipe (Favorites) feature should notify the user of successful saving within 1 second.
+1. Sign Up must enforce secure password complexity and notify the user of non-compliance immediately.
+2. Passwords must be securely hashed before storage to ensure user data protection.
+3. Log Out must revoke all authenticated sessions instantly to prevent unauthorized access.
+4. New recipes must be saved to the database and accessible via their URL within 1 second after submission.
+5. Recipe ID assignment must reliably generate unique, sequential numeric IDs without errors.
+6. Deleting a recipe must prompt the user for confirmation and execute deletion within 1 second after confirmation.
+7. The selected recipe details must load and display within 1 second of user selection.
+8. The full list of recipes must be retrieved and displayed to users within 2 seconds of navigation.
+9. Social media sharing options must reliably open in a new window immediately upon selection.
+10. The Random Recipe function must select and display recipe details within 1 second of the user's request.
 
 
 ## Use Cases
